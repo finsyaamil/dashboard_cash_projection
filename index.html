@@ -146,12 +146,74 @@ table.mini td.mut{color:var(--muted);text-align:left}
 .dch{position:relative;height:220px}
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:0}
 @media (max-width:1100px){.dn{grid-template-columns:1fr}.dch{height:240px}}
+
+/* ===== Clean theme ===== */
+:root{--bg:#f2f5f9;--surface:#ffffff;--surface2:#f6f8fb;--ink:#1e293b;--muted:#6b7a8c;--line:#e6ebf2;--accent:#3b9ae1;--hd:#4aa3df;--sk:#eaf4fc;--projbg:#fdf7ea;--mixbg:#f7f5ef;--side:#3aa0e6}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f141a;--surface:#171d24;--surface2:#1d242c;--ink:#e5ebf1;--muted:#93a0ae;--line:#283039;--accent:#5fb0ea;--hd:#2f79b8;--sk:#1b2a3a;--side:#1f5f91}}
+body{font-size:12.5px}
+body::before{display:none}
+html{background:var(--bg)}
+.side{position:fixed;top:12px;left:12px;bottom:12px;width:150px;background:var(--side);border-radius:22px;padding:22px 0;color:#fff;display:flex;flex-direction:column;align-items:center;gap:18px;z-index:20;box-shadow:0 6px 20px rgba(58,160,230,.25)}
+.side .brand{font-weight:800;font-size:15px;line-height:1.15;text-align:center;padding:0 10px 16px;border-bottom:1px solid rgba(255,255,255,.25);width:100%}
+.side .tabs{display:flex;flex-direction:column;gap:6px;border:0;width:100%;margin:0}
+.side .tabs button{display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.7);background:transparent;border:0;border-left:4px solid transparent;padding:12px 6px;font-size:12px;font-weight:600;cursor:pointer;width:100%}
+.side .tabs button[aria-selected="true"]{color:#fff;background:rgba(255,255,255,.14);border-left-color:#fff}
+.side .tabs button:hover{color:#fff}
+.wrap{margin-left:174px;padding:14px 18px 30px}
+.topbar{background:var(--surface);border-radius:16px;padding:14px 18px;box-shadow:0 1px 3px rgba(16,24,40,.06);margin-bottom:12px;align-items:center}
+h1{font-size:22px;font-weight:800}
+.sub{font-size:11.5px}
+.controls{gap:10px}.controls label{font-size:11px}
+select,input{font-size:12px;padding:5px 8px;border-radius:8px;background:var(--surface2);border:1px solid var(--line)}
+.dpick .dtext{width:128px;background-color:var(--surface2)}
+.ro{font-size:11px}.ro b{font-size:13px}
+.kpi{border:0;border-radius:16px;box-shadow:0 1px 3px rgba(16,24,40,.06);margin-bottom:12px}
+.kpi td{padding:10px 14px;border-right:1px solid var(--line)}
+.kpi .k{font-size:11px}.kpi .v{font-size:17px}.kpi .s{font-size:11px}
+.panel{border:0;border-radius:16px;box-shadow:0 1px 3px rgba(16,24,40,.06);padding:14px}
+.legend{font-size:11px}.tbar h2{font-size:13.5px}
+.opts button,.opts label{font-size:12px}
+.ovc{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:none}
+.ovc .k{font-size:11px}.ovc .v{font-size:16px}.ovc .s{font-size:10.5px}
+.ovbox{border:1px solid var(--line);border-radius:16px;box-shadow:none}
+.ovbox h3{font-size:13px}.sub2{font-size:11px}
+table.mini{font-size:11.5px}
+table.grid{font-size:11.5px}
+.grid th,.grid td{padding:5px 8px}
+.grid thead .tag{font-size:10px}
+/* freeze header & first column */
+.tscroll{max-height:calc(100vh - 150px);overflow:auto;border-radius:10px}
+.grid thead tr:first-child th{position:sticky;top:0;z-index:4}
+.grid thead tr:nth-child(2) th{position:sticky;top:var(--h1,38px);z-index:4}
+.grid thead th.grp.odd,.grid thead tr:nth-child(2) th:not(.sa):not(.sk):not(.bp):not(.bm){background:var(--surface)}
+.grid thead tr:nth-child(2) th.sa{background:var(--surface2)}
+.grid thead tr:nth-child(2) th.sk{background:var(--sk)}
+.grid thead tr:nth-child(2) th.bp{background:var(--projbg)}
+.grid thead tr:nth-child(2) th.bm{background:var(--mixbg)}
+.grid thead .lbl{position:sticky;top:0;left:0;z-index:6;background:var(--surface)}
+@media (max-width:900px){.side{position:static;width:auto;flex-direction:row;border-radius:14px;margin:10px;padding:8px}.side .brand{display:none}.side .tabs{flex-direction:row}.side .tabs button{border-left:0;border-bottom:3px solid transparent}.wrap{margin-left:0}}
+
+.grid thead tr:first-child th.lbl{position:sticky;left:0;top:0;z-index:8;background:var(--surface)}
+.grid tbody td:first-child{z-index:3}
+.ovcards{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+
+.tleft{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+#granSeg{display:inline-flex;background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
+#granSeg button{font:inherit;font-size:12px;font-weight:600;border:0;background:transparent;color:var(--muted);padding:6px 14px;border-radius:8px;cursor:pointer}
+#granSeg button[aria-pressed="true"]{background:var(--side);color:#fff;box-shadow:0 1px 3px rgba(58,160,230,.35)}
 </style>
 </head>
 <body>
+<aside class="side">
+  <div class="brand">Cash<br>Projection</div>
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-v="o" aria-selected="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span>Overview</span></button>
+    <button role="tab" data-v="t" aria-selected="false"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M3 14h18M9 9v11"/></svg><span>Rincian</span></button>
+  </nav>
+</aside>
 <div class="wrap">
-  <header>
-    <div>
+  <header class="topbar">
+    <div class="ttl">
       <h1>Cash Projection <span id="entName"></span></h1>
       <div class="sub" id="subline"></div>
     </div>
@@ -169,12 +231,6 @@ table.mini td.mut{color:var(--muted);text-align:left}
 
   <table class="kpi"><tr id="kpiRow"></tr></table>
 
-  <div class="tabs" role="tablist">
-    <button role="tab" data-g="o" aria-selected="true">Overview</button>
-    <button role="tab" data-g="d" aria-selected="false">Harian</button>
-    <button role="tab" data-g="w" aria-selected="false">Mingguan</button>
-    <button role="tab" data-g="m" aria-selected="false">Bulanan</button>
-  </div>
   <div class="panel" id="ovView">
     <div class="ovcards" id="ovCards"></div>
     <div class="ovgrid">
@@ -189,7 +245,7 @@ table.mini td.mut{color:var(--muted);text-align:left}
   <div class="panel" id="tblView" hidden>
     <div class="legend"><span><i style="background:var(--surface2);border:1px solid var(--line)"></i>Saldo Awal</span><span><i style="background:var(--sk);border:1px solid var(--line)"></i>Saldo Akhir</span><span><i style="background:var(--projbg);border:1px solid var(--proj)"></i>Proyeksi (budget, belum ada realisasi)</span><span><i style="background:var(--mixbg);border:1px solid var(--line)"></i>Periode campuran aktual + proyeksi</span></div>
     <div class="tbar">
-      <h2 id="tblTitle"></h2>
+      <div class="tleft"><div class="seg" id="granSeg"><button data-g="d" aria-pressed="true">Harian</button><button data-g="w" aria-pressed="false">Mingguan</button><button data-g="m" aria-pressed="false">Bulanan</button></div><h2 id="tblTitle"></h2></div>
       <div class="opts">
         <label id="activeOnlyWrap"><input type="checkbox" id="activeOnly" checked>Hanya hari bertransaksi</label>
         <button id="expandAll">Buka semua</button>
@@ -222,7 +278,7 @@ const jt=v=>{if(v===null||v===undefined)return'';const x=Math.round(v);if(x===0)
 const jtK=v=>{const x=Math.round(v)||0;return x<0?'<span class="neg">('+nf0.format(-x)+')</span>':nf0.format(x);};
 const pct=(a,b)=>b?Math.round(a/b*100)+'%':'–';
 
-const S={ent:Object.keys(DATA)[0],g:'o',collapsed:new Set(),activeOnly:true,carry:false,basis:'ar',autoKas:true,autoMin:false};
+const S={ent:Object.keys(DATA)[0],g:'d',view:'o',collapsed:new Set(),activeOnly:true,carry:false,basis:'ar',autoKas:true,autoMin:false};
 let E,C;
 
 /* ---------- perhitungan ---------- */
@@ -369,6 +425,7 @@ function renderTable(){
   body+=row('Projection',pk(cs=>({awal:cs[0].pAwal,budget:nb(cs),real:sr(cs),akhir:L(cs).pAkhir})),'kas');
   body+=row('Kas + Projection',pk(cs=>({awal:cs[0].awal,budget:nb(cs),real:null,akhir:L(cs).akhir})),'grand kas');
   const g=document.getElementById('grid');g.innerHTML=head+'<tbody>'+body+'</tbody>';
+  {const r1=g.querySelector('thead tr');if(r1)g.style.setProperty('--h1',r1.getBoundingClientRect().height+'px');}
   g.querySelectorAll('tr.sec[data-key]').forEach(tr=>tr.firstElementChild.onclick=()=>{const k=tr.dataset.key;S.collapsed.has(k)?S.collapsed.delete(k):S.collapsed.add(k);renderTable();});
   document.getElementById('tblTitle').textContent={d:'Rincian harian',w:'Rincian mingguan (Sabtu–Jumat, dipotong akhir bulan)',m:'Rincian bulanan'}[S.g];
   document.getElementById('activeOnlyWrap').style.display=S.g==='d'?'':'none';
@@ -408,7 +465,7 @@ function renderValidation(){
 const ddmm=s=>s?s.slice(8,10)+'/'+s.slice(5,7)+'/'+s.slice(0,4):'';
 function syncDates(){for(const id of['fromD','toD','cutoff'])$(id+'_t').value=ddmm($(id).value);}
 
-function renderView(){const o=S.g==='o';$('ovView').hidden=!o;$('tblView').hidden=o;if(o)renderOverview();else renderTable();}
+function renderView(){const o=S.view==='o';$('ovView').hidden=!o;$('tblView').hidden=o;if(o)renderOverview();else renderTable();}
 const CH={};
 const cssv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const rgba=(hex,a)=>{const h=hex.replace('#','');const n=parseInt(h.length===3?h.split('').map(c=>c+c).join(''):h,16);return`rgba(${n>>16&255},${n>>8&255},${n&255},${a})`;};
@@ -490,11 +547,12 @@ $('cutoff').onchange=e=>{if(e.target.value){E.cutoff=e.target.value;renderAll();
 $('activeOnly').onchange=e=>{S.activeOnly=e.target.checked;renderTable();};
 $('expandAll').onclick=()=>{S.collapsed.clear();renderTable();};
 $('collapseAll').onclick=()=>{E.sections.forEach(s=>S.collapsed.add(s.cat+'|'+s.title));S.collapsed.add('KAS');renderTable();};
-document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{S.g=b.dataset.g;document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));renderView();});
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{S.view=b.dataset.v;document.querySelectorAll('.tabs button').forEach(x=>x.setAttribute('aria-selected',x===b));renderView();});
+document.querySelectorAll('#granSeg button').forEach(b=>b.onclick=()=>{S.g=b.dataset.g;document.querySelectorAll('#granSeg button').forEach(x=>x.setAttribute('aria-pressed',x===b));renderTable();});
 
 for(const id of['fromD','toD','cutoff']){const n=$(id);n.addEventListener('click',()=>{try{n.showPicker();}catch(e){}});n.addEventListener('input',syncDates);}
 syncControls();renderAll();
-matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(S.g==='o')renderOverview();});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(S.view==='o')renderOverview();});
 </script>
 </body>
 </html>
